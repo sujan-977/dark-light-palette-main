@@ -1,5 +1,6 @@
-import { ArrowDownRight, ArrowUpRight, Github, Instagram, Linkedin, Mail, Menu, Sparkles } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Github, Instagram, Linkedin, Mail, Menu, Moon, Sparkles, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTheme } from "@/hooks/useTheme";
 
 const projects = [
   { number: "01", name: "Morro Studio", type: "Brand identity · 2024", className: "peach" },
@@ -9,6 +10,7 @@ const projects = [
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const timer = window.setTimeout(() => setIsLoading(false), 2200);
@@ -16,7 +18,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="portfolio-page">
+    <div className={`portfolio-page ${theme}`}>
       {isLoading && (
         <div className="page-loader" role="status" aria-live="polite">
           <p>Hi, I am <em>Sujan.</em><span className="loader-caret" aria-hidden="true" /></p>
@@ -29,6 +31,16 @@ const Index = () => {
           <a href="#about">About me</a>
           <a href="mailto:hello@sujankatuwal.com">Let's talk <ArrowUpRight size={15} /></a>
         </nav>
+        <button
+          className="brightness-toggle"
+          type="button"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+          title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+        >
+          {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
+          <span>{theme === "dark" ? "Light" : "Dark"}</span>
+        </button>
         <button className="menu-button" aria-label="Open navigation"><Menu size={21} /></button>
       </header>
 
