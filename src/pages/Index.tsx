@@ -1,4 +1,5 @@
 import { ArrowDownRight, ArrowUpRight, Github, Instagram, Linkedin, Mail, Menu, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const projects = [
   { number: "01", name: "Morro Studio", type: "Brand identity · 2024", className: "peach" },
@@ -7,8 +8,20 @@ const projects = [
 ];
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsLoading(false), 2200);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div className="portfolio-page">
+      {isLoading && (
+        <div className="page-loader" role="status" aria-live="polite">
+          <p>Hi, I am <em>Sujan.</em><span className="loader-caret" aria-hidden="true" /></p>
+        </div>
+      )}
       <header className="site-header">
         <a className="monogram" href="#top" aria-label="Sujan Katuwal home">SK<span>®</span></a>
         <nav className="desktop-nav" aria-label="Main navigation">
