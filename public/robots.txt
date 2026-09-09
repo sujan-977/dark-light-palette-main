@@ -1,4 +1,4 @@
-User-agent: Googlebot
+run User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
