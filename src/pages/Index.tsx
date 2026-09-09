@@ -38,8 +38,11 @@ const Index = () => {
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
           title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
         >
-          {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
-          <span>{theme === "dark" ? "Light" : "Dark"}</span>
+          <Sun size={15} aria-hidden="true" />
+          <span className="theme-name">Light</span>
+          <span className={`theme-switch ${theme}`} aria-hidden="true"><span /></span>
+          <Moon size={15} aria-hidden="true" />
+          <span className="theme-name">Dark</span>
         </button>
         <button className="menu-button" aria-label="Open navigation"><Menu size={21} /></button>
       </header>
